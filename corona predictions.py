@@ -35,6 +35,12 @@ plt.plot(np.arange(0, 7, .01), [total_cases(i) for i in np.arange(0, 7, .01)], l
 plt.scatter(range(0, 7), total_cases_values, c="orange", label="real total cases")
 plt.xticks(range(0, 7), ['may ' + str(25 + i) for i in range(0, 7)])
 plt.title("total corona cases will approx be %d by june 21"%total_cases(27))
-total_cases_figure.show()
 
+plt.legend()
+total_cases_figure.show()
 plt.show()
+
+def cases_method(d):
+	"""this function gives more accurate results of calculating total cases at day (d) from may 25 but can't be represented as a curve and must take an integer"""
+	return 17967 + sum(regression.predict([[i] for i in range(1, d+1)]))
+
